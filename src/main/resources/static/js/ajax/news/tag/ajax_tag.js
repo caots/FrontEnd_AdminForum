@@ -20,7 +20,7 @@ function findAllPageTagNumber() {
     $.ajax({
         type: "GET",
         headers: {
-            "adminbksoftwarevn": tokenHeader_value,
+            "Secret": tokenHeader_value,
         },
         url:URI + "api/v1/public/tag/size",
         success: function (size) {
@@ -47,7 +47,7 @@ function findAllTagPage(page) {
     $.ajax({
         type: "GET",
         headers: {
-            "adminbksoftwarevn": tokenHeader_value,
+            "Secret": tokenHeader_value,
         },
         url:URI + "api/v1/public/tag/page?page="+page ,
         success: function (tags) {
@@ -102,9 +102,9 @@ function deleteTag() {
         console.log("id-tag " + id);
         $.ajax({
             type: "PUT",
-            headers: {
-                "adminbksoftwarevn": tokenHeader_value,
-            },
+            // headers: {
+            //     "adminbksoftwarevn": tokenHeader_value,
+            // },
             contentType: "application/json",
             url: URI +"api/v1/admin/tag/delete?id=" + id,
             timeout: 30000,

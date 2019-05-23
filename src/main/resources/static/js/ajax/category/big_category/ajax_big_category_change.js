@@ -1,15 +1,16 @@
 $(document).ready(function () {
     clickBtnBigChangeSubmit();
+
 });
+
+
 
 //============ Create Big Category ========================
 function createBigCategory() {
-
     let idMenu = '';
     $('#menu-value').click(function () {
         idMenu = $(this).val();
     });
-    $("#btn-create-big-category").prop("disabled", true);
     $('#btn-create-big-category').click(function () {
         const nameBigCategory = $("#name-big-category").val();
         console.log(nameBigCategory);
@@ -45,7 +46,7 @@ function findBigCategoryById(id) {
         type: "GET",
         dataType: "json",
         headers: {
-            "adminbksoftwarevn": tokenHeader_value,
+            "Secret": tokenHeader_value,
         },
         url:URI + "api/v1/public/big-category/find-by-id?id=" + id,
         timeout: 30000,
@@ -60,6 +61,8 @@ function findBigCategoryById(id) {
 
 //============ UPDATE Big Category ========================
 function updateBigCategory(data) {
+    $("#btn-create-menu").prop("disabled", true);
+    $("#btn-create-small-category").prop("disabled", true);
     $('#name-big-category').val(data.name);
     $("#menu-value").prop("disabled", true);
     $('#btn-create-big-category').click(function () {

@@ -1,5 +1,6 @@
 $(document).ready(function () {
     clickBtnSmallChangeSubmit();
+
 });
 
 //============ Create Big Category ========================
@@ -9,7 +10,6 @@ function createSmallCategory() {
         idBigCategory = $(this).val();
     });
 
-    $("#btn-create-small-category").prop("disabled", true);
     $('#btn-create-small-category').click(function () {
 
         const nameSmallCategory = $("#name-small-category").val();
@@ -64,7 +64,8 @@ function findSmallCategoryById(id) {
 
 // ============ UPDATE Medium Category ========================
 function updateSmallCategory(data) {
-
+    $("#btn-create-big-category").prop("disabled", true);
+    $("#btn-create-menu").prop("disabled", true);
     $('#name-small-category').val(data.name);
     $("#big-category-value").prop("disabled", true);
     $('#btn-create-small-category').click(function () {

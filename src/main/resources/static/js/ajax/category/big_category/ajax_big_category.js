@@ -20,9 +20,9 @@ function pageBigCategory(size) {
 function findAllPageBigNumber() {
     $.ajax({
         type: "GET",
-        // headers: {
-        //     "adminbksoftwarevn": tokenHeader_value,
-        // },
+        headers: {
+            "Secret": tokenHeader_value,
+        },
         url: URI + "api/v1/public/big-category/size",
         success: function (size) {
             console.log(size);
@@ -43,19 +43,21 @@ function findAllPageBigNumber() {
         }
     });
 }
+
 //============ Get All Big Category ========================
 function findAllBigCategory(page) {
     $.ajax({
         type: "GET",
-        // headers: {
-        //     "adminbksoftwarevn": tokenHeader_value,
-        // },
-        url: URI +"api/v1/public/big-category/page?page=" + page,
+        headers: {
+            "Secret": tokenHeader_value,
+        },
+        url: URI + "api/v1/public/big-category/page?page=" + page,
         success: function (bigCategories) {
             $("#column-big-category").html(
                 "<td> STT</td>" +
-                "<td> Tên</td>" +
-                "<td> Chức năng</td>"
+                "<td> Name</td>" +
+                "<td>Description</td>" +
+                "<td> Action</td>"
             );
             const listSize = Object.keys(bigCategories).length;
             if (listSize > 0) {
@@ -65,6 +67,7 @@ function findAllBigCategory(page) {
                         <tr>
                         <td> ${bigCategory.id} </td>
                         <td> ${bigCategory.name} </td>
+                         <td> ${bigCategory.description} </td>
                         <td>
                                  <a href="update-category?id=${bigCategory.id}" name="${bigCategory.id}"  class="update-big-category" style="cursor: pointer;color: #4285F4">Chỉnh sửa</a>&nbsp;
                                  <span name="${bigCategory.id}" class="delete-big-category" style="cursor: pointer;color: red">Xóa</span>&nbsp;
@@ -91,11 +94,11 @@ function deleteBigCategory() {
         const id = $(this).attr("name");
         $.ajax({
             type: "PUT",
-            // headers: {
-            //     "adminbksoftwarevn": tokenHeader_value,
-            // },
+            headers: {
+                "Secret": tokenHeader_value,
+            },
             contentType: "application/json",
-            url:URI + "api/v1/admin/big-category/delete?id=" + id,
+            url: URI + "api/v1/admin/big-category/delete?id=" + id,
             timeout: 30000,
             success: function () {
                 alert('SUCCESS');

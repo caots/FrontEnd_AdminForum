@@ -1,5 +1,6 @@
 $(document).ready(function () {
     clickBtnMenuChangeSubmit();
+
 });
 
 //============ Create Menu ========================
@@ -39,9 +40,9 @@ function findMenuById(id) {
     $.ajax({
         type: "GET",
         contentType: "application/json",
-        // headers: {
-        //     "adminbksoftwarevn": tokenHeader_value,
-        // },
+        headers: {
+            "Secret": tokenHeader_value,
+        },
         url:URI + "api/v1/public/menu/find-by-id?id=" + id,
         timeout: 30000,
         success: function (result) {
@@ -55,7 +56,8 @@ function findMenuById(id) {
 
 // ============ UPDATE Medium Category ========================
 function updateMenu(data) {
-
+    $("#btn-create-big-category").prop("disabled", true);
+    $("#btn-create-small-category").prop("disabled", true);
     $('#name-menu').val(data.name);
     $('#btn-create-menu').click(function () {
         data.name = $('#name-menu').val();

@@ -13,40 +13,36 @@ public class HomeAdminController {
 
     private String token;
 
-//    public String getToken(HttpServletRequest request) {
-//        Cookie cookies[] = request.getCookies();
-//        for (int i = 0; i < cookies.length; i++) {
-//            if (cookies[i].getName().equals("token")) {
-//                token = cookies[i].getValue();
-//            }
-//        }
-//
-//        String username = JWT.require(Algorithm.HMAC512(SecurityConstants.SECRET.getBytes()))
-//                .build().verify(token.replace(SecurityConstants.TOKEN_PREFIX, ""))
-//                .getSubject();
-//
-//        return username;
-//    }
+    public String getToken(HttpServletRequest request) {
+        Cookie cookies[] = request.getCookies();
+        for (int i = 0; i < cookies.length; i++) {
+            if (cookies[i].getName().equals("token")) {
+                token = cookies[i].getValue();
+            }
+        }
+
+        return token;
+    }
 
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public String pageLogin(HttpServletRequest request) {
-//        Cookie cookies[] = request.getCookies();
-//        if (cookies!= null) {
-//            for (int i = 0; i < cookies.length; i++) {
-//                cookies[i].setMaxAge(0);
-//            }
-//        }
+        Cookie cookies[] = request.getCookies();
+        if (cookies != null) {
+            for (int i = 0; i < cookies.length; i++) {
+                cookies[i].setMaxAge(0);
+            }
+        }
         return "login";
     }
 
     @RequestMapping(value = {"/home"}, method = RequestMethod.GET)
     public String homePage(HttpServletRequest request) {
 
-//        String username = getToken(request);
-//
-//        if (username == null) {
-//            return "login";
-//        }
+        String token = getToken(request);
+
+        if (token == null) {
+            return "login";
+        }
         return "homeAdmin";
 
 
@@ -58,24 +54,23 @@ public class HomeAdminController {
     @RequestMapping(value = {"/news"}, method = RequestMethod.GET)
     public String newsPage(HttpServletRequest request) {
 
-//        String username = getToken(request);
-//
-//        if (username == null) {
-//            return "login";
-//        }
+        String token = getToken(request);
+
+        if (token == null) {
+            return "login";
+        }
         return "news";
     }
-
 
 
     @RequestMapping(value = {"/tag"}, method = RequestMethod.GET)
     public String tagPage(HttpServletRequest request) {
 
-//        String username = getToken(request);
-//
-//        if (username == null) {
-//            return "login";
-//        }
+        String token = getToken(request);
+
+        if (token == null) {
+            return "login";
+        }
         return "tag";
     }
 
@@ -83,11 +78,11 @@ public class HomeAdminController {
     @GetMapping("/big-category")
     public String bigCategoryPage(HttpServletRequest request) {
 
-//        String username = getToken(request);
-//
-//        if (username == null) {
-//            return "login";
-//        }
+        String token = getToken(request);
+
+        if (token == null) {
+            return "login";
+        }
         return "bigCategory";
     }
 
@@ -95,25 +90,24 @@ public class HomeAdminController {
     @GetMapping("/small-category")
     public String smallCategoryPage(HttpServletRequest request) {
 
-//        String username = getToken(request);
-//
-//        if (username == null) {
-//            return "login";
-//        }
+        String token = getToken(request);
+
+        if (token == null) {
+            return "login";
+        }
         return "smallCategory";
     }
 
     @GetMapping("/menu")
     public String MenuPage(HttpServletRequest request) {
 
-//        String username = getToken(request);
-//
-//        if (username == null) {
-//            return "login";
-//        }
+        String token = getToken(request);
+
+        if (token == null) {
+            return "login";
+        }
         return "menu";
     }
-
 
 
 }

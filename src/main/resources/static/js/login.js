@@ -43,7 +43,7 @@ function onSubmit(event) {
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "/api/v1/public/login",
+        url: URI +" api/v1/public/login",
         data: JSON.stringify(loginForm),
         cache: false,
         timeout: 300000,
