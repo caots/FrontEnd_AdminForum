@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<script src="resources/js/ajax/category/big_category/ajax_menu.js"></script>
+<script src="resources/js/ajax/category/menu/ajax_menu.js"></script>
 <h3 class="title-body" style="text-align: center">
     Manage Menu
 </h3>

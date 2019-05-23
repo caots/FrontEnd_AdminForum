@@ -22,7 +22,7 @@ function findAllPageNewsNumber() {
     $.ajax({
         type: "GET",
         headers: {
-            "adminbksoftwarevn": tokenHeader_value,
+            "Secret": tokenHeader_value,
         },
         url: URI +"api/v1/public/news/size",
         success: function (size) {
@@ -49,7 +49,7 @@ function findAllPageNewsByNameNumber() {
     $.ajax({
         type: "GET",
         headers: {
-            "adminbksoftwarevn": tokenHeader_value,
+            "Secret": tokenHeader_value,
         },
         url: URI +"api/v1/public/news/name/size",
         success: function (size) {
@@ -71,7 +71,7 @@ function findAllNewsBySize(page) {
     $.ajax({
         type: "GET",
         headers: {
-            "adminbksoftwarevn": tokenHeader_value,
+            "Secret": tokenHeader_value,
         },
         url:URI + "api/v1/public/news/page?page=" + page,
         success: function (news) {
@@ -87,7 +87,10 @@ function findAllNewsBySize(page) {
 function displayOnTable(newses) {
     $("#column-news").html(
         "<td>STT </td>" +
-        "<td>Name </td>" +
+        "<td>Title </td>" +
+        "<td>Time </td>" +
+        "<td>Like</td>" +
+        "<td>User</td>" +
         "<td>Action</td>"
     );
     const listSize = Object.keys(newses).length;
@@ -98,7 +101,10 @@ function displayOnTable(newses) {
             contentRow += `
                          <tr>
                          <td> ${news.id} </td>
-                         <td> ${news.name} </td>
+                         <td> ${news.title} </td>
+                         <td> ${news.time} </td>
+                         <td> ${news.like} </td>
+                         <td> ${news.user.name} </td>
                          <td>
                               <span name="${news.id}" class="delete-news" style="cursor: pointer;color: red">Xóa</span>&nbsp;
                         </td>
@@ -144,7 +150,7 @@ function searchNewsByName(page) {
             $.ajax({
                 type: "GET",
                 headers: {
-                    "adminbksoftwarevn": tokenHeader_value,
+                    "Secret": tokenHeader_value,
                 },
                 url: URI +"api/v1/public/news/search?name=" + nameProduct + "&page=" + page,
                 success: function (products) {

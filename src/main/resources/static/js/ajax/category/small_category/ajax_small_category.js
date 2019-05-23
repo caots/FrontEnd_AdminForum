@@ -20,9 +20,9 @@ function pageSmallCategory(size) {
 function findAllPageSmallNumber() {
     $.ajax({
         type: "GET",
-        // headers: {
-        //     "adminbksoftwarevn": tokenHeader_value,
-        // },
+        headers: {
+            "Secret": tokenHeader_value,
+        },
         url: URI +"api/v1/public/small-category/size",
         success: function (size) {
 
@@ -48,9 +48,9 @@ function findAllSmallCategory(page) {
     //============ Get All Small Category ========================
     $.ajax({
         type: "GET",
-        // headers: {
-        //     "adminbksoftwarevn": tokenHeader_value,
-        // },
+        headers: {
+            "Secret": tokenHeader_value,
+        },
         url: URI +"api/v1/public/small-category/page?page=" + page,
         success: function (smallCategories) {
             $("#column-small-category").html(

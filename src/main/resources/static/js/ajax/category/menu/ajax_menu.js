@@ -7,15 +7,16 @@ function findAllMenu() {
     //============ Get All Menu ========================
     $.ajax({
         type: "GET",
-        // headers: {
-        //     "adminbksoftwarevn": tokenHeader_value,
-        // },
+        headers: {
+            "Secret": tokenHeader_value,
+        },
         url: URI + "api/v1/public/menu",
         success: function (menus) {
             $("#column-menu").html(
                 "<td> STT</td>" +
-                "<td> Tên</td>" +
-                "<td> Chức Năng</td>"
+                "<td> Name</td>" +
+                "<td> Description</td>" +
+                "<td> Action</td>"
             );
             const listSize = Object.keys(menus).length;
             if (menus.check == "fail") {
@@ -32,8 +33,9 @@ function findAllMenu() {
                         <tr>
                         <td> ${menu.id} </td>
                         <td> ${menu.name} </td>
+                         <td> ${menu.description} </td>
                         <td>
-                              <a href="update-menu?id=${menu.id}" name="${menu.id}"  style="cursor: pointer;color: #4285F4">Sửa</a>&nbsp;
+                              <a href="update-category?id=${menu.id}" name="${menu.id}"  style="cursor: pointer;color: #4285F4">Sửa</a>&nbsp;
                               <span name="${menu.id}" class="delete-menu" style="cursor: pointer;color: red">Xóa</span>&nbsp;
                         </td>
                         </tr>

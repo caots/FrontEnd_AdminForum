@@ -45,7 +45,7 @@ function findTagById(id) {
         type: "GET",
         dataType: "json",
         headers: {
-            "adminbksoftwarevn": tokenHeader_value,
+            "Secret": tokenHeader_value,
         },
         url:URI + "api/v1/public/tag/find-by-id?id=" + id,
         timeout: 30000,

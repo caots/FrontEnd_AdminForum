@@ -7,9 +7,9 @@ $(document).ready(function () {
 function findAllNameBigCategory() {
     $.ajax({
         type: "GET",
-        // headers: {
-        //     "adminbksoftwarevn": tokenHeader_value,
-        // },
+        headers: {
+            "Secret": tokenHeader_value,
+        },
         url: URI +"api/v1/public/big-category",
         success: function (bigCategories) {
             const listSize = Object.keys(bigCategories).length;
@@ -37,9 +37,9 @@ function findAllNameBigCategory() {
 function findAllNameMenuCategory() {
     $.ajax({
         type: "GET",
-        // headers: {
-        //     "adminbksoftwarevn": tokenHeader_value,
-        // },
+        headers: {
+            "Secret": tokenHeader_value,
+        },
         url: URI +"api/v1/public/menu",
         success: function (menus) {
             const listSize = Object.keys(menus).length;
@@ -65,9 +65,9 @@ function findAllNameMenuCategory() {
 function findAllNameSmallCategory() {
     $.ajax({
         type: "GET",
-        // headers: {
-        //     "adminbksoftwarevn": tokenHeader_value,
-        // },
+        headers: {
+            "Secret": tokenHeader_value,
+        },
         url: URI +"api/v1/public/small-category",
         success: function (smallCategories) {
             const listSize = Object.keys(smallCategories).length;
