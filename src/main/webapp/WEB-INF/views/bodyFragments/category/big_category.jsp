@@ -4,7 +4,7 @@
     Manage Big Category
 </h3>
 <button type="button" class="btn btn-success float-left btn-search">
-    <a href="create-category" style="text-decoration: none;color: white">
+    <a href="create-big-category" style="text-decoration: none;color: white">
         <i class="fas fa-plus"></i>Create
     </a>
 </button>

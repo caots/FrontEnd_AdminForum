@@ -50,9 +50,19 @@
 
     <!--================================ FORM_CREATE =========================-->
     <!-- Category Page -->
-    <definition name="createCategory" extends="base.definition">
-        <put-attribute name="title" value="create category"/>
-        <put-attribute name="body" value="/WEB-INF/views/form-change/category/changeCategory.jsp"/>
+    <definition name="createBigCategory" extends="base.definition">
+        <put-attribute name="title" value="create big category"/>
+        <put-attribute name="body" value="/WEB-INF/views/form-change/category/changeBigCategory.jsp"/>
+    </definition>
+
+    <definition name="createSmallCategory" extends="base.definition">
+        <put-attribute name="title" value="create small category"/>
+        <put-attribute name="body" value="/WEB-INF/views/form-change/category/changeSmallCategory.jsp"/>
+    </definition>
+
+    <definition name="createMenu" extends="base.definition">
+        <put-attribute name="title" value="create menu"/>
+        <put-attribute name="body" value="/WEB-INF/views/form-change/category/chaneMenu.jsp"/>
     </definition>
 
     <!-- tag Page -->
@@ -64,9 +74,19 @@
 
     <!--================================ FORM_ UPDATE =========================-->
     <!--Update Category Page -->
-    <definition name="updateCategory" extends="base.definition">
-        <put-attribute name="title" value="update category"/>
-        <put-attribute name="body" value="/WEB-INF/views/form-change/category/changeCategory.jsp"/>
+    <definition name="updateBigCategory" extends="base.definition">
+        <put-attribute name="title" value="update big category"/>
+        <put-attribute name="body" value="/WEB-INF/views/form-change/category/changeBigCategory.jsp"/>
+    </definition>
+
+    <definition name="updateSmallCategory" extends="base.definition">
+        <put-attribute name="title" value="update small category"/>
+        <put-attribute name="body" value="/WEB-INF/views/form-change/category/changeSmallCategory.jsp"/>
+    </definition>
+
+    <definition name="updateMenu" extends="base.definition">
+        <put-attribute name="title" value="update menu"/>
+        <put-attribute name="body" value="/WEB-INF/views/form-change/category/chaneMenu.jsp"/>
     </definition>
 
     <!-- Update Tag Page -->

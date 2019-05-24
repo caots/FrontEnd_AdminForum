@@ -69,7 +69,7 @@ function findAllBigCategory(page) {
                         <td> ${bigCategory.name} </td>
                          <td> ${bigCategory.description} </td>
                         <td>
-                                 <a href="update-category?id=${bigCategory.id}" name="${bigCategory.id}"  class="update-big-category" style="cursor: pointer;color: #4285F4">Chỉnh sửa</a>&nbsp;
+                                 <a href="update-big-category?id=${bigCategory.id}" name="${bigCategory.id}"  class="update-big-category" style="cursor: pointer;color: #4285F4">Chỉnh sửa</a>&nbsp;
                                  <span name="${bigCategory.id}" class="delete-big-category" style="cursor: pointer;color: red">Xóa</span>&nbsp;
 
                         </td>
@@ -77,6 +77,10 @@ function findAllBigCategory(page) {
                     `;
                 });
                 $("#row-big-category").html(contentRow);
+                $(".body-main .table-responsive tr td").css({
+                    "max-width": "260px",
+                    "overflow": "-webkit-paged-y"
+                });
                 //============ delete =============
                 deleteBigCategory();
             }
