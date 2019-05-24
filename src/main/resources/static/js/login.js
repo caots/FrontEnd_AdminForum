@@ -24,7 +24,6 @@ $(document).ready(function () {
 //action when click or enter
 function onSubmit(event) {
 
-
     var username = $("#username").val();
     var password = $("#password").val();
 
@@ -43,21 +42,20 @@ function onSubmit(event) {
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: URI +" api/v1/public/login",
+        url:  "api/v1/public/login",
         data: JSON.stringify(loginForm),
         cache: false,
         timeout: 300000,
         success: function (data) {
-            document.cookie = "token="+data;
-            if (data == "fail") {
-                alert("login fail");
-            }
+            token = data;
+            console.log(data);
+            document.cookie = "token=" + data;
             location.href = "home";
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             errMess(jqXHR, textStatus, errorThrown);
             alert("error");
-            event.preventDefault(event);
         }
     });
 }

@@ -24,7 +24,7 @@ function findAllPageNewsNumber() {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url: URI +"api/v1/public/news/size",
+        url: "api/v1/public/news/size",
         success: function (size) {
 
             findAllNewsBySize(1);
@@ -51,7 +51,7 @@ function findAllPageNewsByNameNumber() {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url: URI +"api/v1/public/news/name/size",
+        url: "api/v1/public/news/name/size",
         success: function (size) {
             pageNews(size);
             $('.page').click(function () {
@@ -73,7 +73,7 @@ function findAllNewsBySize(page) {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url:URI + "api/v1/public/news/page?page=" + page,
+        url: "api/v1/public/news/page?page=" + page,
         success: function (news) {
             displayOnTable(news);
         },
@@ -125,10 +125,10 @@ function deleteNews() {
         $.ajax({
             type: "PUT",
             headers: {
-                "adminbksoftwarevn": tokenHeader_value,
+                "Authorization": tokenHeader_admin_value,
             },
             contentType: "application/json",
-            url: URI +"api/v1/admin/news/delete?id=" + id,
+            url: "api/v1/admin/news/delete?id=" + id,
             timeout: 30000,
             success: function () {
                 alert('DELETE SUCCESS');
@@ -152,7 +152,7 @@ function searchNewsByName(page) {
                 headers: {
                     "Secret": tokenHeader_value,
                 },
-                url: URI +"api/v1/public/news/search?name=" + nameProduct + "&page=" + page,
+                url: "api/v1/public/news/search?name=" + nameProduct + "&page=" + page,
                 success: function (products) {
                     findAllPageNewsByNameNumber();
                     displayOnTable(products);

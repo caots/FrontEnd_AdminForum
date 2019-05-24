@@ -22,9 +22,9 @@ function createSmallCategory() {
             type: "POST",
             contentType: "application/json",
             headers: {
-                "adminbksoftwarevn": tokenHeader_value,
+                "Authorization": tokenHeader_admin_value,
             },
-            url:URI + "api/v1/admin/small-category?big-id=" + idBigCategory,
+            url: "api/v1/admin/small-category?big-id=" + idBigCategory,
             data: JSON.stringify(smallCategory),
             cache: false,
             timeout: 300000,
@@ -49,9 +49,9 @@ function findSmallCategoryById(id) {
         type: "GET",
         dataType: "json",
         headers: {
-            "adminbksoftwarevn": tokenHeader_value,
+            "Secret": tokenHeader_value,
         },
-        url:URI + "api/v1/public/small-category/find-by-id?id=" + id,
+        url: "api/v1/public/small-category/find-by-id?id=" + id,
         timeout: 30000,
         success: function (result) {
             updateSmallCategory(result);
@@ -75,9 +75,9 @@ function updateSmallCategory(data) {
             type: "PUT",
             contentType: "application/json",
             headers: {
-                "adminbksoftwarevn": tokenHeader_value,
+                "Authorization": tokenHeader_admin_value,
             },
-            url:URI + "api/v1/admin/small-category",
+            url: "api/v1/admin/small-category",
             data: JSON.stringify(data),
             timeout: 30000,
             success: function (result) {

@@ -23,7 +23,7 @@ function findAllPageBigNumber() {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url: URI + "api/v1/public/big-category/size",
+        url: "api/v1/public/big-category/size",
         success: function (size) {
             console.log(size);
             pageBigCategory(size);
@@ -51,7 +51,7 @@ function findAllBigCategory(page) {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url: URI + "api/v1/public/big-category/page?page=" + page,
+        url:  "api/v1/public/big-category/page?page=" + page,
         success: function (bigCategories) {
             $("#column-big-category").html(
                 "<td> STT</td>" +
@@ -95,10 +95,10 @@ function deleteBigCategory() {
         $.ajax({
             type: "PUT",
             headers: {
-                "Secret": tokenHeader_value,
+                "Authorization": tokenHeader_admin_value,
             },
             contentType: "application/json",
-            url: URI + "api/v1/admin/big-category/delete?id=" + id,
+            url:  "api/v1/admin/big-category/delete?id=" + id,
             timeout: 30000,
             success: function () {
                 alert('SUCCESS');

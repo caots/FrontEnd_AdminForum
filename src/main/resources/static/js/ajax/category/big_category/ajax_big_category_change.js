@@ -21,9 +21,9 @@ function createBigCategory() {
             type: "POST",
             contentType: "application/json",
             headers: {
-                "adminbksoftwarevn": tokenHeader_value,
+                "Authorization": tokenHeader_admin_value,
             },
-            url:URI + "api/v1/admin/big-category?menu-id=" + idMenu,
+            url: "api/v1/admin/big-category?menu-id=" + idMenu,
             data: JSON.stringify(bigCategory),
             cache: false,
             timeout: 300000,
@@ -48,7 +48,7 @@ function findBigCategoryById(id) {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url:URI + "api/v1/public/big-category/find-by-id?id=" + id,
+        url: "api/v1/public/big-category/find-by-id?id=" + id,
         timeout: 30000,
         success: function (result) {
             updateBigCategory(result);
@@ -71,9 +71,9 @@ function updateBigCategory(data) {
         $.ajax({
             type: "PUT",
             contentType: "application/json",
-            url: URI +"api/v1/admin/big-category",
+            url: "api/v1/admin/big-category",
             headers: {
-                "adminbksoftwarevn": tokenHeader_value,
+                "Authorization": tokenHeader_admin_value,
             },
             data: JSON.stringify(data),
             timeout: 30000,

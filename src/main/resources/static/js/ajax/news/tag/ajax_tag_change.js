@@ -18,7 +18,7 @@ function createTag() {
             type: "POST",
             contentType: "application/json",
             headers: {
-                "adminbksoftwarevn": tokenHeader_value,
+                "Authorization": tokenHeader_admin_value,
             },
             url: URI+ "api/v1/admin/tag",
             data: JSON.stringify(tag),
@@ -47,7 +47,7 @@ function findTagById(id) {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url:URI + "api/v1/public/tag/find-by-id?id=" + id,
+        url: "api/v1/public/tag/find-by-id?id=" + id,
         timeout: 30000,
         success: function (result) {
             updateTag(result);
@@ -71,7 +71,7 @@ function updateTag(data) {
             type: "PUT",
             contentType: "application/json",
             headers: {
-                "adminbksoftwarevn": tokenHeader_value,
+                "Authorization": tokenHeader_admin_value,
             },
             url: URI+"api/v1/admin/tag",
             data: JSON.stringify(data),
