@@ -8,7 +8,7 @@
         <!-- USER_MENU -->
         <ul class="user-menu not-view">
             <li class="user-menu-iteam">
-                <a href="/logout">Đăng xuất</a>
+                <a href="login">Đăng xuất</a>
             </li>
         </ul>
     </div>

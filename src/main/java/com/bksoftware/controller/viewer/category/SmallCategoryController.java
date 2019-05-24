@@ -62,7 +62,7 @@ public class SmallCategoryController {
             HttpServletResponse response
     ) {
         response.setHeader("Access-Control-Allow-Origin", "*");
-        double pageNumber = recordService.findByName("small-category").getSize();
+        double pageNumber = recordService.findByName("small_category").getSize();
         double result = Math.ceil(pageNumber / 10);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }

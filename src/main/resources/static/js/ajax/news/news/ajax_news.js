@@ -104,7 +104,7 @@ function displayOnTable(newses) {
                          <td> ${news.title} </td>
                          <td> ${news.time} </td>
                          <td> ${news.like} </td>
-                         <td> ${news.user.name} </td>
+                         <td> ${news.appUser.email} </td>
                          <td>
                               <span name="${news.id}" class="delete-news" style="cursor: pointer;color: red">Xóa</span>&nbsp;
                         </td>

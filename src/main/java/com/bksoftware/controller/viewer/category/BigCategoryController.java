@@ -65,7 +65,8 @@ public class BigCategoryController {
             HttpServletResponse response
     ) {
         response.setHeader("Access-Control-Allow-Origin", "*");
-        double pageNumber = recordService.findByName("big-category").getSize();
+        double pageNumber = recordService.findByName("big_category").getSize();
+        System.out.println(pageNumber);
         double result = Math.ceil(pageNumber / 10);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }

@@ -33,7 +33,7 @@ function findAllMenu() {
                         <tr>
                         <td> ${menu.id} </td>
                         <td> ${menu.name} </td>
-                         <td> ${menu.description} </td>
+                        <td> ${menu.description} </td>
                         <td>
                               <a href="update-category?id=${menu.id}" name="${menu.id}"  style="cursor: pointer;color: #4285F4">Sửa</a>&nbsp;
                               <span name="${menu.id}" class="delete-menu" style="cursor: pointer;color: red">Xóa</span>&nbsp;
