@@ -61,8 +61,6 @@ function findBigCategoryById(id) {
 
 //============ UPDATE Big Category ========================
 function updateBigCategory(data) {
-    $("#btn-create-menu").prop("disabled", true);
-    $("#btn-create-small-category").prop("disabled", true);
     $('#name-big-category').val(data.name);
     $("#menu-value").prop("disabled", true);
     $('#btn-create-big-category').click(function () {

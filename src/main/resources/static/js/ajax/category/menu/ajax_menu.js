@@ -10,7 +10,7 @@ function findAllMenu() {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url:  "api/v1/public/menu",
+        url: "api/v1/public/menu",
         success: function (menus) {
             $("#column-menu").html(
                 "<td> STT</td>" +
@@ -35,13 +35,17 @@ function findAllMenu() {
                         <td> ${menu.name} </td>
                         <td> ${menu.description} </td>
                         <td>
-                              <a href="update-category?id=${menu.id}" name="${menu.id}"  style="cursor: pointer;color: #4285F4">Sửa</a>&nbsp;
+                              <a href="update-menu?id=${menu.id}" name="${menu.id}"  style="cursor: pointer;color: #4285F4">Sửa</a>&nbsp;
                               <span name="${menu.id}" class="delete-menu" style="cursor: pointer;color: red">Xóa</span>&nbsp;
                         </td>
                         </tr>
                     `;
                 });
                 $("#row-menu").html(contentRow);
+                $(".body-main .table-responsive tr td").css({
+                    "max-width": "260px",
+                    "overflow": "-webkit-paged-y"
+                });
                 //============ delete =============
                 deleteMenu();
             }
@@ -52,7 +56,7 @@ function findAllMenu() {
     })
 }
 
-//============ Delete Menu ========================
+//============ Delete Menu =================
 function deleteMenu() {
 
     $('.delete-menu').click(function () {

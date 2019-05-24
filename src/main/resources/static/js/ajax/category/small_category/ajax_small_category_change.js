@@ -64,8 +64,7 @@ function findSmallCategoryById(id) {
 
 // ============ UPDATE Medium Category ========================
 function updateSmallCategory(data) {
-    $("#btn-create-big-category").prop("disabled", true);
-    $("#btn-create-menu").prop("disabled", true);
+
     $('#name-small-category').val(data.name);
     $("#big-category-value").prop("disabled", true);
     $('#btn-create-small-category').click(function () {

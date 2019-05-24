@@ -76,7 +76,7 @@ function findAllTagPage(page) {
                         <td> ${tag.name} </td>
                        
                         <td>
-                              <a href="update-partner?id=${tag.id}" name="${tag.id}"   style="cursor: pointer;color: #4285F4">Chỉnh sửa</a>&nbsp;
+                              <a href="update-tag?id=${tag.id}" name="${tag.id}"   style="cursor: pointer;color: #4285F4">Chỉnh sửa</a>&nbsp;
                               <span name="${tag.id}" class="delete-tag" style="cursor: pointer;color: red">Xóa</span>&nbsp;
                         </td>
                         </tr>

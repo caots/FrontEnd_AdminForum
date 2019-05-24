@@ -19,17 +19,63 @@ public class CreatePageController {
     }
 
     //=========================Category=================================
-    @GetMapping("/create-category")
+    @GetMapping("/create-big-category")
+    public String createBigCategoryPage(HttpServletRequest request) {
+        String token = getToken(request);
+
+        if (token == null) {
+            return "login";
+        }
+        return "createBigCategory";
+    }
+
+    @GetMapping("/create-small-category")
+    public String createSmallCategoryPage(HttpServletRequest request) {
+        String token = getToken(request);
+
+        if (token == null) {
+            return "login";
+        }
+        return "createSmallCategory";
+    }
+
+    @GetMapping("/create-menu")
     public String createCategoryPage(HttpServletRequest request) {
         String token = getToken(request);
 
         if (token == null) {
             return "login";
         }
-        return "createCategory";
+        return "createMenu";
     }
 
-    @GetMapping("/update-category")
+    @GetMapping("/update-big-category")
+    public String updateBigCategoryPage(
+            @RequestParam("id") int id,
+            HttpServletRequest request
+    ) {
+        String token = getToken(request);
+
+        if (token == null) {
+            return "login";
+        }
+        return "updateBigCategory";
+    }
+
+    @GetMapping("/update-small-category")
+    public String updateSmallCategoryPage(
+            @RequestParam("id") int id,
+            HttpServletRequest request
+    ) {
+        String token = getToken(request);
+
+        if (token == null) {
+            return "login";
+        }
+        return "updateSmallCategory";
+    }
+
+    @GetMapping("/update-menu")
     public String updateCategoryPage(
             @RequestParam("id") int id,
             HttpServletRequest request
@@ -39,7 +85,7 @@ public class CreatePageController {
         if (token == null) {
             return "login";
         }
-        return "updateCategory";
+        return "updateMenu";
     }
 
     @GetMapping("/create-tag")

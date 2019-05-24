@@ -74,13 +74,17 @@ function findAllSmallCategory(page) {
                         <td> ${smallCategory.name} </td>
                         <td> ${smallCategory.bigCategory.name} </td>
                         <td>
-                              <a href="update-category?id=${smallCategory.id}" name="${smallCategory.id}"  class="update-small-category" style="cursor: pointer;color: #4285F4">Chỉnh sửa</a>&nbsp;
+                              <a href="update-small-category?id=${smallCategory.id}" name="${smallCategory.id}"  class="update-small-category" style="cursor: pointer;color: #4285F4">Chỉnh sửa</a>&nbsp;
                               <span name="${smallCategory.id}" class="delete-small-category" style="cursor: pointer;color: red">Xóa</span>&nbsp;
                         </td>
                         </tr>
                     `;
                 })
                 $("#row-small-category").html(contentRow);
+                $(".body-main .table-responsive tr td").css({
+                    "max-width": "260px",
+                    "overflow": "-webkit-paged-y"
+                });
                 //============ delete =============
                 deleteSmallCategory();
             }

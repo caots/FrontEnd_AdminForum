@@ -8,7 +8,7 @@
         <div class="title">
             <h2 class=" font-weight-bold">Create Tag </h2>
         </div>
-        <div class="name-and-tag">
+        <div class="name-and-tag" style="text-align: center">
             <div class="myInput">
                 <p>Name Tag:</p>
                 <input type="text" class="form-control" name="name" id="name-tag-value" placeholder="name tag">

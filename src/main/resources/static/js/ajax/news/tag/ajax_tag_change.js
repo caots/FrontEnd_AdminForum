@@ -5,9 +5,6 @@ $(document).ready(function () {
 //============ CREATE TAG ========================
 
 function createTag() {
-
-    $("#btn-create-tag").prop("disabled", true);
-
     $('#btn-create-tag').click(function () {
 
         const nameTag = $('#name-tag-value').val();

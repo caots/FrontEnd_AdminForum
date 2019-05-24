@@ -4,7 +4,7 @@
     Manage Small Category
 </h3>
 <button type="button" class="btn btn-success float-left btn-search">
-    <a href="create-category" style="text-decoration: none;color: white">
+    <a href="create-small-category" style="text-decoration: none;color: white">
         <i class="fas fa-plus"></i>Thêm
     </a>
 </button>

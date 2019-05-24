@@ -5,7 +5,6 @@ $(document).ready(function () {
 
 //============ Create Menu ========================
 function createMenu() {
-    $("#btn-create-menu").prop("disabled", true);
     $('#btn-create-menu').click(function () {
         const nameMenu = $("#name-menu").val();
         console.log(nameMenu);
@@ -46,6 +45,7 @@ function findMenuById(id) {
         url: "api/v1/public/menu/find-by-id?id=" + id,
         timeout: 30000,
         success: function (result) {
+            console.log(result);
             updateMenu(result);
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -54,10 +54,9 @@ function findMenuById(id) {
     });
 }
 
-// ============ UPDATE Medium Category ========================
+// ============ UPDATE MENU========================
 function updateMenu(data) {
-    $("#btn-create-big-category").prop("disabled", true);
-    $("#btn-create-small-category").prop("disabled", true);
+
     $('#name-menu').val(data.name);
     $('#btn-create-menu').click(function () {
         data.name = $('#name-menu').val();
