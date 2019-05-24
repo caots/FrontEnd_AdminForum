@@ -27,6 +27,8 @@ public interface NewsService {
 
     Float findByBigCategorySize(int bigCategoryId);
 
+    List<News> findSizeNewsAndTagByBigCategory(int bigCategoryId);
+
     List<News> findAllPage(Pageable pageable);
 
     List<News> findByNamePage(String title, Pageable pageable);
@@ -38,6 +40,8 @@ public interface NewsService {
     List<News> findNewsByTime(Pageable pageable);
 
     List<News> findNewsByLike(Pageable pageable);
+
+    List<News> findNewsByLikeWithMonth();
 
     boolean saveNews(News news);
 
