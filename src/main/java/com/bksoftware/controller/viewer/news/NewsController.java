@@ -2,8 +2,9 @@ package com.bksoftware.controller.viewer.news;
 
 
 import com.bksoftware.entities.Record;
-import com.bksoftware.entities.category.SmallCategory;
 import com.bksoftware.entities.news.News;
+import com.bksoftware.entities.news.NumberNewsAndTag;
+import com.bksoftware.entities.news.Tag;
 import com.bksoftware.service.RecordService;
 import com.bksoftware.service.news.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("api/v1/public/news")
-public class NewsController {
+public class
+NewsController {
 
     @Autowired
     private NewsService newsService;
@@ -145,6 +149,39 @@ public class NewsController {
         double result = Math.ceil(newsService.findByBigCategorySize(enumBigCategoryId) / 10);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+    //Hot By Month
+    @GetMapping("/big-category/size")
+    public ResponseEntity<List<News>> findAllNewsHotByMonth(
+            HttpServletResponse response
+    ) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        List<News> news = newsService.findNewsByLikeWithMonth();
+        if (news != null) return new ResponseEntity<>(news, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    //size news and tag by big category
+    @GetMapping("/big-category/news-tag/size")
+    public ResponseEntity<Object> findSizeAllNewsPageByBigCategoryId(
+            @RequestParam("id") int id,
+            HttpServletResponse response
+    ) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        List<News> news = newsService.findSizeNewsAndTagByBigCategory(id);
+        NumberNewsAndTag number = new NumberNewsAndTag();
+        number.setNewsNumber(news.size());
+        Set<Tag> tags = new HashSet<>();
+        news.forEach(n -> {
+            n.getTags().forEach(tag -> {
+                tags.add(tag);
+            });
+        });
+
+        number.setTagNumber(tags.size());
+        return new ResponseEntity<>(number, HttpStatus.OK);
+    }
+
 
     @GetMapping("/small-category")
     public ResponseEntity<List<News>> findAllNewsPageBySmallCategoryId(

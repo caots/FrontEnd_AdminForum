@@ -11,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -107,6 +109,11 @@ public class NewsService_Impl implements NewsService {
     }
 
     @Override
+    public List<News> findSizeNewsAndTagByBigCategory(int bigCategoryId) {
+        return newsRepository.findByBigCategoryIdSize(bigCategoryId);
+    }
+
+    @Override
     public List<News> findAllPage(Pageable pageable) {
         try {
             Page<News> newsPage = newsRepository.findAllPage(pageable);
@@ -178,6 +185,29 @@ public class NewsService_Impl implements NewsService {
     }
 
     @Override
+    public List<News> findNewsByLikeWithMonth() {
+        try {
+            List<News> newsList = newsRepository.findNewsByLikeWithMonth();
+            List<News> newsLikeByMonth = new ArrayList<>();
+            newsList.forEach(news -> {
+                if (news.getTime().getMonth().getValue() == LocalDate.now().getMonth().getValue()
+                ) {
+                    newsLikeByMonth.add(news);
+                }
+            });
+            return newsLikeByMonth;
+
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "find-all-news-by-like-with-month-error : {0}", ex.getMessage());
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(LocalDate.now().getMonth().getValue());
+    }
+
+    @Override
     public boolean saveNews(News news) {
         try {
             newsRepository.save(news);
@@ -187,6 +217,7 @@ public class NewsService_Impl implements NewsService {
         }
         return false;
     }
+
 
     @Override
     public boolean deleteNews(int id) {
