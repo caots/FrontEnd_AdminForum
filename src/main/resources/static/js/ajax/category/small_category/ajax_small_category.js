@@ -23,7 +23,7 @@ function findAllPageSmallNumber() {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url: URI +"api/v1/public/small-category/size",
+        url: "api/v1/public/small-category/size",
         success: function (size) {
 
             pageSmallCategory(size);
@@ -51,7 +51,7 @@ function findAllSmallCategory(page) {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url: URI +"api/v1/public/small-category/page?page=" + page,
+        url: "api/v1/public/small-category/page?page=" + page,
         success: function (smallCategories) {
             $("#column-small-category").html(
                 "<td> STT</td>" +
@@ -98,11 +98,11 @@ function deleteSmallCategory() {
         const id = $(this).attr("name");
         $.ajax({
             type: "PUT",
-            // headers: {
-            //     "adminbksoftwarevn": tokenHeader_value,
-            // },
+            headers: {
+                "Authorization": tokenHeader_admin_value,
+            },
             contentType: "application/json",
-            url:URI + "api/v1/admin/small-category/delete?id=" + id,
+            url: "api/v1/admin/small-category/delete?id=" + id,
             timeout: 30000,
 
             success: function () {

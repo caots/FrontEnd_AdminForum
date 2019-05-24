@@ -22,7 +22,7 @@ function findAllPageTagNumber() {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url:URI + "api/v1/public/tag/size",
+        url: "api/v1/public/tag/size",
         success: function (size) {
             console.log(size);
             pageTag(size);
@@ -49,7 +49,7 @@ function findAllTagPage(page) {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url:URI + "api/v1/public/tag/page?page="+page ,
+        url: "api/v1/public/tag/page?page="+page ,
         success: function (tags) {
 
             $("#column-tag").html(
@@ -102,11 +102,11 @@ function deleteTag() {
         console.log("id-tag " + id);
         $.ajax({
             type: "PUT",
-            // headers: {
-            //     "adminbksoftwarevn": tokenHeader_value,
-            // },
+            headers: {
+                "Authorization": tokenHeader_admin_value,
+            },
             contentType: "application/json",
-            url: URI +"api/v1/admin/tag/delete?id=" + id,
+            url: "api/v1/admin/tag/delete?id=" + id,
             timeout: 30000,
             success: function () {
                 alert('DELETE SUCCESS');

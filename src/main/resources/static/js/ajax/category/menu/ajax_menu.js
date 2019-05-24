@@ -10,7 +10,7 @@ function findAllMenu() {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url: URI + "api/v1/public/menu",
+        url:  "api/v1/public/menu",
         success: function (menus) {
             $("#column-menu").html(
                 "<td> STT</td>" +
@@ -60,10 +60,10 @@ function deleteMenu() {
         $.ajax({
             type: "PUT",
             contentType: "application/json",
-            // headers: {
-            //     "adminbksoftwarevn": tokenHeader_value,
-            // },
-            url:URI + "api/v1/admin/menu/delete?id=" + id,
+            headers: {
+                "Authorization": tokenHeader_admin_value,
+            },
+            url: "api/v1/admin/menu/delete?id=" + id,
             timeout: 30000,
             success: function () {
                 alert('DELETE SUCCESS');

@@ -16,6 +16,7 @@ public class HomeAdminController {
     public String getToken(HttpServletRequest request) {
         Cookie cookies[] = request.getCookies();
         for (int i = 0; i < cookies.length; i++) {
+            System.out.println(cookies[i].getName());
             if (cookies[i].getName().equals("token")) {
                 token = cookies[i].getValue();
             }
@@ -43,9 +44,7 @@ public class HomeAdminController {
         if (token == null) {
             return "login";
         }
-        return "homeAdmin";
-
-
+        return "home";
     }
 
     //========================= News =================================

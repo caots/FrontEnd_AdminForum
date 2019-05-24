@@ -9,7 +9,6 @@
       integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 <!-- ---------------------------------------CSS PAGE------------------------------------------ -->
 
-<link type="text/css" href="resources/tool/jquery.datetimepicker.min.css" rel="stylesheet">
 <%--=================================== BASE CSS =======================================--%>
 <link type="text/css" href="resources/css/baseFragments/menu.css" rel="stylesheet">
 <link type="text/css" href="resources/css/baseFragments/header.css" rel="stylesheet">

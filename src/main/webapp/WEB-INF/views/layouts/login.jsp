@@ -8,7 +8,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <script src="resources/js/ajax/common.js"></script>
     <%--===================================CSS =======================================--%>
     <%@include file="../../library/library_css.jsp" %>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -25,7 +25,6 @@
         <div class="row">
             <div class="col-7 col-sm-6 col-md-5 col-lg-4 form-login">
                 <div class="title" style="color: #ffff00">LOGIN BK</div>
-
                     <div class="from-input">
                         <i class="fas fa-user-circle"></i>
                         <input type="text" id="username" class="input-login" name="username" placeholder="username">

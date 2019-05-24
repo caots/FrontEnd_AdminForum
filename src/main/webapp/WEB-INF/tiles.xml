@@ -4,7 +4,7 @@
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
     <!--Login-->
-    <definition name="login" template="/WEB-INF/views/layouts/login.jsp"></definition>
+    <definition name="login" template="/WEB-INF/views/layouts/login.jsp"/>
 
     <!-- Base Define -->
     <definition name="base.definition"
@@ -16,7 +16,7 @@
     </definition>
 
     <!-- Body Admin  -->
-    <definition name="homeAdmin" extends="base.definition">
+    <definition name="home" extends="base.definition">
         <put-attribute name="title" value="Home Admin"/>
         <put-attribute name="body" value="/WEB-INF/views/bodyFragments/home.jsp"/>
     </definition>

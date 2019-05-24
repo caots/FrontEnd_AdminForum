@@ -15,10 +15,10 @@ function createMenu() {
         $.ajax({
             type: "POST",
             contentType: "application/json",
-            // headers: {
-            //     "adminbksoftwarevn": tokenHeader_value,
-            // },
-            url:URI + "api/v1/admin/menu",
+            headers: {
+                "Authorization": tokenHeader_admin_value,
+            },
+            url: "api/v1/admin/menu",
             data: JSON.stringify(menu),
             cache: false,
             timeout: 300000,
@@ -43,7 +43,7 @@ function findMenuById(id) {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url:URI + "api/v1/public/menu/find-by-id?id=" + id,
+        url: "api/v1/public/menu/find-by-id?id=" + id,
         timeout: 30000,
         success: function (result) {
             updateMenu(result);
@@ -65,10 +65,10 @@ function updateMenu(data) {
         $.ajax({
             type: "PUT",
             contentType: "application/json",
-            // headers: {
-            //     "adminbksoftwarevn": tokenHeader_value,
-            // },
-            url:URI + "api/v1/admin/menu",
+            headers: {
+                "Authorization": tokenHeader_admin_value,
+            },
+            url: "api/v1/admin/menu",
             data: JSON.stringify(data),
             timeout: 30000,
             success: function (result) {

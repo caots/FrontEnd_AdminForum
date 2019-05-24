@@ -10,7 +10,7 @@ function findAllNameBigCategory() {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url: URI +"api/v1/public/big-category",
+        url: "api/v1/public/big-category",
         success: function (bigCategories) {
             const listSize = Object.keys(bigCategories).length;
             if (bigCategories.check == "fail") {
@@ -40,7 +40,7 @@ function findAllNameMenuCategory() {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url: URI +"api/v1/public/menu",
+        url: "api/v1/public/menu",
         success: function (menus) {
             const listSize = Object.keys(menus).length;
             if (menus.check == "fail") {
@@ -68,7 +68,7 @@ function findAllNameSmallCategory() {
         headers: {
             "Secret": tokenHeader_value,
         },
-        url: URI +"api/v1/public/small-category",
+        url: "api/v1/public/small-category",
         success: function (smallCategories) {
             const listSize = Object.keys(smallCategories).length;
             if (smallCategories.check == "fail") {
