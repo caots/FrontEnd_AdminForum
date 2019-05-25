@@ -231,4 +231,15 @@ public class NewsService_Impl implements NewsService {
         }
         return false;
     }
+
+    @Override
+    public List<String> getImageNews(String contentNews) {
+        List<String> imageList = new ArrayList<>();
+        String[] strImage = contentNews.split("<img src=\"");
+        for (int i = 0; i < strImage.length; i++) {
+            imageList.add(strImage[i].split("\" width")[0]);
+        }
+        return imageList;
+
+    }
 }
