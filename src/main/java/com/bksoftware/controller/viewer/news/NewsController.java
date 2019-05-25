@@ -151,7 +151,7 @@ NewsController {
     }
 
     //Hot By Month
-    @GetMapping("/big-category/size")
+    @GetMapping("/hot-by-month")
     public ResponseEntity<List<News>> findAllNewsHotByMonth(
             HttpServletResponse response
     ) {
@@ -160,6 +160,8 @@ NewsController {
         if (news != null) return new ResponseEntity<>(news, HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+
 
     //size news and tag by big category
     @GetMapping("/big-category/news-tag/size")

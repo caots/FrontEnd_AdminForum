@@ -32,6 +32,9 @@ public class News implements Serializable {
     private String title;
 
     @NotNull
+    private String image;
+
+    @NotNull
     private LocalDateTime time;
 
     @NotNull

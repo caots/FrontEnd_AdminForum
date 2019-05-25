@@ -8,9 +8,12 @@ import lombok.Data;
 @AllArgsConstructor
 public class NumberNewsAndTag {
 
+    private String image;
+
     private int newsNumber;
 
     private int tagNumber;
 
-    public NumberNewsAndTag(){}
+    public NumberNewsAndTag() {
+    }
 }
