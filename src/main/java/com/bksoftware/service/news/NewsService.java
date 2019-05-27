@@ -41,7 +41,7 @@ public interface NewsService {
 
     List<News> findNewsByLike(Pageable pageable);
 
-    List<News> findNewsByLikeWithMonth();
+    List<News> findNewsByLikeWithMonth(Pageable pageable);
 
     boolean saveNews(News news);
 

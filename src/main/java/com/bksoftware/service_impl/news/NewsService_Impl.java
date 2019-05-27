@@ -185,9 +185,9 @@ public class NewsService_Impl implements NewsService {
     }
 
     @Override
-    public List<News> findNewsByLikeWithMonth() {
+    public List<News> findNewsByLikeWithMonth(Pageable pageable) {
         try {
-            List<News> newsList = newsRepository.findNewsByLikeWithMonth();
+            List<News> newsList = newsRepository.findNewsByLikeWithMonth(pageable).getContent();
             List<News> newsLikeByMonth = new ArrayList<>();
             newsList.forEach(news -> {
                 if (news.getTime().getMonth().getValue() == LocalDate.now().getMonth().getValue()

@@ -62,5 +62,5 @@ public interface NewsRepository extends JpaRepository<News, Integer> {
     Page<News> findNewsByLike(Pageable pageable);
 
     @Query(value = " SELECT n from News n  where n.status=true order by (n.like) desc ")
-    List<News> findNewsByLikeWithMonth();
+    Page<News> findNewsByLikeWithMonth(Pageable pageable);
 }
