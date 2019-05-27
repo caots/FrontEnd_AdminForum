@@ -8,11 +8,11 @@
             <h1 style="margin-top: 40px"> Big Category </h1>
             <div class="category">
                 <div class="form-group row">
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <label><h5>Big Category</h5></label>
                         <input class="form-control" placeholder="big category" id="name-big-category">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <label><h5>Menu</h5></label>
                         <select class="form-control" id="menu-value"></select>
                     </div>

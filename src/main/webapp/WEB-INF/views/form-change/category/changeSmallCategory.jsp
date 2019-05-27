@@ -8,11 +8,11 @@
             <h1 style="margin-top: 40px"> Small Category</h1>
             <div class="category">
                 <div class="form-group row">
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <label><h5>Small Category </h5></label>
                         <input class="form-control" placeholder="small category" id="name-small-category">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <label><h5>Big Category</h5></label>
                         <select class="form-control" id="big-category-value"> </select>
                     </div>
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div style="text-align: center">
-                <a href="big-category">
+                <a href="small-category">
                     <button type="button" class="btn btn-lg btn-warning">Thoát</button>
                 </a>
             </div>

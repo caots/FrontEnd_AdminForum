@@ -20,11 +20,10 @@
                 </div>
             </div>
             <div style="text-align: center">
-                <a href="big-category">
+                <a href="menu">
                     <button type="button" class="btn btn-lg btn-warning">Thoát</button>
                 </a>
             </div>
-
         </div>
         <div class="col-md-2"></div>
     </div>

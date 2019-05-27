@@ -5,11 +5,8 @@
         <button type="button" class="btn btn-primary">
             <a href="tag" style="text-decoration: none;color: white">Quay lại</a>
         </button>
-        <div class="title">
-            <h2 class=" font-weight-bold">Create Tag </h2>
-        </div>
-        <div class="name-and-tag" style="text-align: center">
-            <div class="myInput">
+        <div class="name-and-tag" >
+            <div class="myInput" style="margin: auto">
                 <p>Name Tag:</p>
                 <input type="text" class="form-control" name="name" id="name-tag-value" placeholder="name tag">
             </div>
