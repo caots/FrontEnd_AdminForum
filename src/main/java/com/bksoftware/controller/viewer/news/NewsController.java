@@ -167,7 +167,6 @@ NewsController {
     }
 
 
-
     //size news and tag by big category
     @GetMapping("/big-category/news-tag/size")
     public ResponseEntity<Object> findSizeAllNewsPageByBigCategoryId(
@@ -241,6 +240,7 @@ NewsController {
     ) {
         response.setHeader("Access-Control-Allow-Origin", "*");
         double result = Math.ceil(newsService.findByNamePageSize(enumNameSearch) / 10);
+        System.out.println(result);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 

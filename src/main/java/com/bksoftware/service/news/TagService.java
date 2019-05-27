@@ -15,6 +15,8 @@ public interface TagService {
 
     Tag findById(int id);
 
+    List<Tag> findByName(String name);
+
     boolean saveTag(Tag tag);
 
     boolean deleteTag(int id);

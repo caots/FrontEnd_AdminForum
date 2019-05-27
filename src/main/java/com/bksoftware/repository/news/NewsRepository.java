@@ -36,8 +36,8 @@ public interface NewsRepository extends JpaRepository<News, Integer> {
     @Query("SELECT n FROM News n WHERE n.smallCategory.bigCategory.menu.name = :name and n.status= true")
     Page<News> findByMenuName(@Param("name") String name, Pageable pageable);
 
-    @Query("SELECT n FROM News n WHERE n.smallCategory.bigCategory.menu.name = :name and n.status= true")
-    List<News> findByMenuNameSize(@Param("name") String name);
+    @Query("SELECT n FROM News n WHERE n.title LIKE CONCAT('%',:title,'%') and n.status= true")
+    List<News> findByNameSize(@Param("title") String name);
 
     @Query("SELECT n FROM News n WHERE n.smallCategory.bigCategory.name = :name and n.status= true")
     Page<News> findByBigCategoryName(@Param("name") String name, Pageable pageable);

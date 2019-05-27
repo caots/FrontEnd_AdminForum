@@ -150,7 +150,7 @@ public class NewsService_Impl implements NewsService {
 
     @Override
     public Float findByNamePageSize(String title) {
-        return (float) newsRepository.findByMenuNameSize(title).size();
+        return (float) newsRepository.findByNameSize(title).size();
     }
 
     @Override

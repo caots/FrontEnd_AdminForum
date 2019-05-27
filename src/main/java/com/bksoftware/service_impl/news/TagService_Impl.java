@@ -72,6 +72,17 @@ public class TagService_Impl implements TagService {
     }
 
     @Override
+    public List<Tag> findByName(String name) {
+        try {
+            List<Tag> tags = tagRepository.findByNameTag(name);
+            return tags;
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "find-all-tag-by-name-error : {0}", ex.getMessage());
+        }
+        return null;
+    }
+
+    @Override
     public boolean saveTag(Tag tag) {
         try {
             tagRepository.save(tag);

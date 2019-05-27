@@ -69,6 +69,19 @@ public class TagController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/find-by-name")
+    public ResponseEntity<List<Tag>> findNewsById(@RequestParam("name") String name,
+                                                  HttpServletResponse response
+    ) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        List<Tag> tags = tagService.findByName(name);
+        if (tags != null) {
+            return new ResponseEntity<>(tags, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+
     @GetMapping("/size")
     public ResponseEntity<Double> findAllNewsPageSize(
             HttpServletResponse response

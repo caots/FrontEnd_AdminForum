@@ -21,22 +21,6 @@ public class AdminTagController {
     @Autowired
     private RecordService recordService;
 
-    @PostMapping
-    public ResponseEntity<Object> createTag(@RequestBody Tag tag,
-                                            HttpServletResponse response
-    ) {
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        Record record = recordService.findByName("tag");
-        record.setSize(record.getSize() + 1);
-        tag.setStatus(true);
-        boolean result = tagService.saveTag(tag);
-        if (result) {
-            recordService.saveRecord(record);
-            return new ResponseEntity<>(tag, HttpStatus.OK);
-        }
-        return new ResponseEntity<>("create tag fail", HttpStatus.NOT_FOUND);
-    }
-
     @PutMapping
     public ResponseEntity<Object> updateTag(@RequestBody Tag tag,
                                             HttpServletResponse response
