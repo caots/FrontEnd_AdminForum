@@ -48,7 +48,6 @@ public class UserNewsController {
             @RequestParam("user-id") int userId,
             @RequestParam("small-id") int smallId,
             @RequestParam("tagString") String tagString,
-            @RequestParam("news-content") String content,
             HttpServletResponse response
     ) {
         response.setHeader("Access-Control-Allow-Origin", "*");
@@ -76,8 +75,6 @@ public class UserNewsController {
                 tagList.add(tag);
             }
         });
-        List<String> imageNews = newsService.getImageNews(content);
-        news.setImage(imageNews.get(0));
         news.setTags(tagList);
         boolean result = newsService.saveNews(news);
         if (result) {

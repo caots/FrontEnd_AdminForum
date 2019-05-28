@@ -300,7 +300,7 @@ NewsController {
     @GetMapping("/hot")
     public ResponseEntity<List<News>> findAllNewsPageByHot(
             @RequestParam(name = "page", required = false, defaultValue = "1") int page,
-            @RequestParam(name = "size", required = false, defaultValue = "10") int size,
+            @RequestParam(name = "size", required = false, defaultValue = "5") int size,
             HttpServletResponse response
     ) {
         response.setHeader("Access-Control-Allow-Origin", "*");
@@ -319,7 +319,7 @@ NewsController {
     ) {
         response.setHeader("Access-Control-Allow-Origin", "*");
         double pageNumber = recordService.findByName("news").getSize();
-        double result = Math.ceil(pageNumber / 10);
+        double result = Math.ceil(pageNumber / 5);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
