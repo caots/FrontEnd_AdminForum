@@ -70,7 +70,7 @@ public class AppUser implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<AppRole> appRoles;
 
-    public Collection<? extends GrantedAuthority> getGrantedAuthorities() {
+    public Collection<? extends GrantedAuthority> grantedAuthorities() {
         List<GrantedAuthority> list = new ArrayList<>();
         appRoles.forEach(role -> list.add(new SimpleGrantedAuthority(role.getName())));
         return list;
