@@ -50,12 +50,10 @@ public class UserSecurityController {
                                            HttpServletResponse response
     ) {
         response.setHeader("Access-Control-Allow-Origin", "*");
-        if (!checkEmail(registerForm.getUsername()))
-            return new ResponseEntity<>("Email is not valid", HttpStatus.BAD_REQUEST);
+
         if (appUserService.findByEmail(registerForm.getUsername()) != null)
             return new ResponseEntity<>("Email has been used", HttpStatus.BAD_REQUEST);
-        if (!checkPassword(registerForm.getPassword()))
-            return new ResponseEntity<>("Password is not valid", HttpStatus.BAD_REQUEST);
+
         if (appUserService.saveAppUser(registerForm)) {
             Record record = recordService.findByName("user");
             record.setSize(record.getSize() + 1);
