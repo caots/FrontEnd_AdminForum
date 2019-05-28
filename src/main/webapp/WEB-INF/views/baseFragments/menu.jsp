@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <div class="col-5 col-sm-4 col-md-3 col-lg-3 col-xl-2 menu-right">
     <div class="logo-top">
-        <img src="resources/img/home-admin/logo-bksoftware.png" alt="" class="img-fluid">
+        <img src="" alt="" class="img-fluid">
     </div>
     <div class="menu-list set-height" style="overflow-y:auto;">
         <ul>

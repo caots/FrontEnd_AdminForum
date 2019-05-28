@@ -154,12 +154,12 @@ NewsController {
     @GetMapping("/hot-by-month")
     public ResponseEntity<List<News>> findAllNewsHotByMonth(
             @RequestParam(name = "page", required = false, defaultValue = "1") int page,
-            @RequestParam(name = "size", required = false, defaultValue = "10") int size,
+            @RequestParam(name = "size", required = false, defaultValue = "5") int size,
             HttpServletResponse response
     ) {
         response.setHeader("Access-Control-Allow-Origin", "*");
         if (page < 1) page = 1;
-        if (size < 0) size = 10;
+        if (size < 0) size = 5;
         Pageable pageable = PageRequest.of(page - 1, size);
         List<News> news = newsService.findNewsByLikeWithMonth(pageable);
         if (news != null) return new ResponseEntity<>(news, HttpStatus.OK);

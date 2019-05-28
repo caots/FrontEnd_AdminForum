@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
             <div class="col-8 col-sm-7 col-md-6 col-lg-5 img-logo">
-                    <img src="resources/img/login/bksoftwareLogo.png" alt="" class="img-fluid">
+                    <img src="" alt="" class="img-fluid">
             </div> <!--END_BACKGROUND-->
         </div>
         <div class="row">
