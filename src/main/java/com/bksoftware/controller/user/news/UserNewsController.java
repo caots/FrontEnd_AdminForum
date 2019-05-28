@@ -62,7 +62,7 @@ public class UserNewsController {
         news.setStatus(true);
         news.setLike(0);
 
-        String[] arrTagId = content.split(",");
+        String[] arrTagId = tagString.split(",");
         Set<Integer> tagIds = new HashSet<>();
 
         for (int i = 0; i < arrTagId.length; i++) {
