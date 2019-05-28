@@ -43,12 +43,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
@@ -58,11 +58,12 @@
             <version>3.7.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
         </dependency>
+
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -80,6 +81,15 @@
             <artifactId>tiles-jsp</artifactId>
             <version>3.0.8</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.tomee/apache-tomee -->
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>apache-tomee</artifactId>
+            <version>7.1.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -96,6 +106,15 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+            <!--<plugin>-->
+            <!--<groupId>org.apache.openejb.maven</groupId>-->
+            <!--<artifactId>tomee-maven-plugin</artifactId>-->
+            <!--<version>1.7.2</version>-->
+            <!--<configuration>-->
+            <!--<tomeeVersion>1.7.2</tomeeVersion>-->
+            <!--<tomeeClassifier>plus</tomeeClassifier>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 

@@ -56,9 +56,12 @@ public class UserTagController {
                 Tag t = new Tag();
                 t.setName(nameTag[i]);
                 t.setStatus(true);
-                System.out.println(t.getName());
                 tagService.saveTag(t);
-                tagIds.add(t.getId());
+                Tag tag = tagService.findByNameUnique(t.getName());
+                tagIds.add(tag.getId());
+            }else{
+                Tag tag = tagService.findByNameUnique(nameTag[i]);
+                tagIds.add(tag.getId());
             }
         }
 

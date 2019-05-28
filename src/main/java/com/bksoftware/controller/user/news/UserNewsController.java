@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -46,7 +47,7 @@ public class UserNewsController {
             @RequestBody News news,
             @RequestParam("user-id") int userId,
             @RequestParam("small-id") int smallId,
-            @RequestParam("tag-id") Set<Integer> listTagId,
+            @RequestParam("tagString") String tagString,
             @RequestParam("news-content") String content,
             HttpServletResponse response
     ) {
@@ -60,8 +61,16 @@ public class UserNewsController {
         news.setTime(LocalDateTime.now());
         news.setStatus(true);
         news.setLike(0);
+
+        String[] arrTagId = content.split(",");
+        Set<Integer> tagIds = new HashSet<>();
+
+        for (int i = 0; i < arrTagId.length; i++) {
+            tagIds.add(Integer.parseInt(arrTagId[i]));
+        }
+
         List<Tag> tagList = new ArrayList<>();
-        listTagId.forEach(id -> {
+        tagIds.forEach(id -> {
             Tag tag = tagService.findById(id);
             if (tag != null) {
                 tagList.add(tag);

@@ -106,4 +106,15 @@ public class TagService_Impl implements TagService {
         }
         return false;
     }
+
+    @Override
+    public Tag findByNameUnique(String name) {
+        try {
+            Tag tag = tagRepository.findByName(name);
+            return tag;
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "find-tag-by-name-error : {0}", ex.getMessage());
+        }
+        return null;
+    }
 }

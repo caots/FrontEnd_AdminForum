@@ -21,4 +21,5 @@ public interface TagService {
 
     boolean deleteTag(int id);
 
+    Tag findByNameUnique(String name);
 }
