@@ -305,7 +305,7 @@ NewsController {
     ) {
         response.setHeader("Access-Control-Allow-Origin", "*");
         if (page < 1) page = 1;
-        if (size < 0) size = 10;
+        if (size < 0) size = 5;
         Pageable pageable = PageRequest.of(page - 1, size);
         List<News> newsList = newsService.findNewsByLike(pageable);
         if (newsList != null) return new ResponseEntity<>(newsList, HttpStatus.OK);

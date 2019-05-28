@@ -60,7 +60,6 @@ public class UserNewsController {
         news.setTime(LocalDateTime.now());
         news.setStatus(true);
         news.setLike(0);
-
         String[] arrTagId = tagString.split(",");
         Set<Integer> tagIds = new HashSet<>();
 

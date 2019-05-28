@@ -4,6 +4,7 @@ import com.bksoftware.entities.Record;
 import com.bksoftware.entities.json_payload.LoginForm;
 import com.bksoftware.entities.json_payload.RegisterForm;
 import com.bksoftware.entities.user.AppUser;
+import com.bksoftware.entities.user.Message;
 import com.bksoftware.service_impl.RecordService_Impl;
 import com.bksoftware.service_impl.user.AppUserService_Impl;
 import com.bksoftware.service_impl.JWTService;
@@ -50,9 +51,12 @@ public class UserSecurityController {
                                            HttpServletResponse response
     ) {
         response.setHeader("Access-Control-Allow-Origin", "*");
+        Message message = new Message();
+        if (appUserService.findByEmail(registerForm.getUsername()) != null) {
 
-        if (appUserService.findByEmail(registerForm.getUsername()) != null)
-            return new ResponseEntity<>("Email has been used", HttpStatus.BAD_REQUEST);
+            message.setMessage("Email has been used");
+            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        }
 
         if (appUserService.saveAppUser(registerForm)) {
             Record record = recordService.findByName("user");
@@ -61,6 +65,7 @@ public class UserSecurityController {
             recordService.saveRecord(record);
             return new ResponseEntity<>(appUser, HttpStatus.OK);
         }
-        return new ResponseEntity<>("register fail", HttpStatus.BAD_REQUEST);
+        message.setMessage("register fail");
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
 }
