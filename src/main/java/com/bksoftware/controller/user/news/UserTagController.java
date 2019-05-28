@@ -11,7 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("api/v1/user/tag")
@@ -24,10 +27,11 @@ public class UserTagController {
     private RecordService recordService;
 
     @PostMapping
-    public ResponseEntity<Object> createTag(@RequestParam("content") String content,
-                                            HttpServletResponse response
+    public ResponseEntity<Set<Integer>> createTag(@RequestParam("content") String content,
+                                                   HttpServletResponse response
     ) {
         response.setHeader("Access-Control-Allow-Origin", "*");
+        Set<Integer> tagIds = new HashSet<>();
         System.out.println(content);
         Record record = recordService.findByName("tag");
         record.setSize(record.getSize() + 1);
@@ -54,10 +58,11 @@ public class UserTagController {
                 t.setStatus(true);
                 System.out.println(t.getName());
                 tagService.saveTag(t);
+                tagIds.add(t.getId());
             }
         }
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(tagIds, HttpStatus.OK);
     }
 
 
