@@ -45,6 +45,7 @@ function createSmallCategory() {
 //============ Find Big Category By Id ===================
 
 function findSmallCategoryById(id) {
+
     $.ajax({
         type: "GET",
         dataType: "json",
@@ -64,12 +65,11 @@ function findSmallCategoryById(id) {
 
 // ============ UPDATE Medium Category ========================
 function updateSmallCategory(data) {
-
     $('#name-small-category').val(data.name);
+    $("#big-category-value").val(data.bigCategory.name);
     $("#big-category-value").prop("disabled", true);
     $('#btn-create-small-category').click(function () {
         data.name = $('#name-small-category').val();
-        console.log(data);
         $.ajax({
             type: "PUT",
             contentType: "application/json",

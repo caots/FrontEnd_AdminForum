@@ -1,6 +1,7 @@
 $(document).ready(function () {
     findAllSmallCategory(1);
     findAllPageSmallNumber();
+    console.log("token:" + token);
 });
 
 //==================================page=============================.unbind('click')

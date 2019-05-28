@@ -42,13 +42,12 @@ function onSubmit(event) {
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url:  "api/v1/public/login",
+        url: "api/v1/public/login",
         data: JSON.stringify(loginForm),
         cache: false,
         timeout: 300000,
         success: function (data) {
-            token = data;
-            console.log(data);
+            sessionStorage.setItem("token" , data);
             document.cookie = "token=" + data;
             location.href = "home";
 

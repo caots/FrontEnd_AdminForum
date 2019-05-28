@@ -4,7 +4,6 @@ $(document).ready(function () {
 });
 
 
-
 //============ Create Big Category ========================
 function createBigCategory() {
     let idMenu = '';
@@ -62,10 +61,10 @@ function findBigCategoryById(id) {
 //============ UPDATE Big Category ========================
 function updateBigCategory(data) {
     $('#name-big-category').val(data.name);
+    $("#menu-value").val(data.menu.name);
     $("#menu-value").prop("disabled", true);
     $('#btn-create-big-category').click(function () {
         data.name = $('#name-big-category').val();
-        console.log(data);
         $.ajax({
             type: "PUT",
             contentType: "application/json",

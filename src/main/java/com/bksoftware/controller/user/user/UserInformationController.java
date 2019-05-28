@@ -28,7 +28,7 @@ public class UserInformationController {
         if (username == null) return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         AppUser appUser = appUserService.findByEmail(username);
         if (appUser == null) return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        return new ResponseEntity<>(appUser, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(appUser, HttpStatus.OK);
     }
 
     @PostMapping("/change-password")
