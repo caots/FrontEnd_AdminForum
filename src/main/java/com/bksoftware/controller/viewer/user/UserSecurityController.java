@@ -51,11 +51,10 @@ public class UserSecurityController {
                                            HttpServletResponse response
     ) {
         response.setHeader("Access-Control-Allow-Origin", "*");
-        Message message = new Message();
+
         if (appUserService.findByEmail(registerForm.getUsername()) != null) {
 
-            message.setMessage("Email has been used");
-            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Email has been used", HttpStatus.BAD_REQUEST);
         }
 
         if (appUserService.saveAppUser(registerForm)) {
@@ -65,7 +64,6 @@ public class UserSecurityController {
             recordService.saveRecord(record);
             return new ResponseEntity<>(appUser, HttpStatus.OK);
         }
-        message.setMessage("register fail");
-        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("register fail", HttpStatus.BAD_REQUEST);
     }
 }
