@@ -1,9 +1,8 @@
 package com.bksoftware.security;
 
 import com.bksoftware.entities.user.AppUser;
-import com.bksoftware.service_impl.user.AppUserService_Impl;
 import com.bksoftware.service_impl.JWTService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.bksoftware.service_impl.user.AppUserService_Impl;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,13 +16,14 @@ import java.io.IOException;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
-    @Autowired
     private AppUserService_Impl appUserService;
-    @Autowired
+
     private JWTService jwtService;
 
-    public JWTAuthorizationFilter(AuthenticationManager authenticationManager) {
+    public JWTAuthorizationFilter(AuthenticationManager authenticationManager,AppUserService_Impl appUserService, JWTService jwtService) {
         super(authenticationManager);
+        this.appUserService =appUserService;
+        this.jwtService = jwtService;
     }
 
     // dua user vao he thong
@@ -34,8 +34,10 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
             UsernamePasswordAuthenticationToken authenticationToken = getAuthentication(request);
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             chain.doFilter(request, response);
-        } else
+        } else{
+            System.out.println("no authorization");
             chain.doFilter(request, response);
+        }
     }
 
 
@@ -46,6 +48,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
             String username = jwtService.decode(token);
             if (username != null) {
                 AppUser appUser = appUserService.findByEmail(username);
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>  "+appUser.getEmail());
                 return new UsernamePasswordAuthenticationToken(username, null, appUser.grantedAuthorities());
             }
             return null;
