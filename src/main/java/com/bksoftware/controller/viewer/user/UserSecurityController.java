@@ -39,7 +39,7 @@ public class UserSecurityController {
     ) {
         response.setHeader("Access-Control-Allow-Origin", "*");
         AppUser appUser = appUserService.findByEmailAndPassword(loginForm.getUsername(), loginForm.getPassword());
-        if (appUser == null) return new ResponseEntity<>("username or password is not correct", HttpStatus.BAD_REQUEST);
+        if (appUser == null) return new ResponseEntity<>("username or password is not correct", HttpStatus.OK);
         else {
             String token = jwtService.generateToken(appUser.getEmail());
             return new ResponseEntity<>(token, HttpStatus.OK);

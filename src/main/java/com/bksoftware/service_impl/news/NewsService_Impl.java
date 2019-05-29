@@ -3,8 +3,10 @@ package com.bksoftware.service_impl.news;
 
 import com.bksoftware.entities.news.News;
 import com.bksoftware.entities.news.Tag;
+import com.bksoftware.entities.user.AppUser;
 import com.bksoftware.repository.news.NewsRepository;
 import com.bksoftware.repository.news.TagRepository;
+import com.bksoftware.repository.user.AppUserRepository;
 import com.bksoftware.service.news.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,7 +29,10 @@ public class NewsService_Impl implements NewsService {
     private NewsRepository newsRepository;
 
     @Autowired
-    TagRepository tagRepository;
+    private TagRepository tagRepository;
+
+    @Autowired
+    private AppUserRepository appUserRepository;
 
     @Override
     public List<News> findAll() {
@@ -233,13 +238,15 @@ public class NewsService_Impl implements NewsService {
     }
 
     @Override
-    public List<String> getImageNews(String contentNews) {
-        List<String> imageList = new ArrayList<>();
-        String[] strImage = contentNews.split("<img src=\"");
-        for (int i = 0; i < strImage.length; i++) {
-            imageList.add(strImage[i].split("\" width")[0]);
+    public List<News> findAllNewsByUserId(int id) {
+        try {
+            AppUser appUser = appUserRepository.findById(id);
+            List<News> newsList = newsRepository.findByAppUserAndStatus(appUser, true);
+            return newsList;
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "find-all-news-by-user-id-error : {0}", ex.getMessage());
         }
-        return imageList;
-
+        return null;
     }
+
 }

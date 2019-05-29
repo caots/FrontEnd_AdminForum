@@ -47,6 +47,5 @@ public interface NewsService {
 
     boolean deleteNews(int id);
 
-    List<String> getImageNews(String contentNews);
-
+    List<News> findAllNewsByUserId(int id);
 }

@@ -1,6 +1,7 @@
 package com.bksoftware.repository.news;
 
 import com.bksoftware.entities.news.News;
+import com.bksoftware.entities.user.AppUser;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -46,6 +47,8 @@ public interface NewsRepository extends JpaRepository<News, Integer> {
     Page<News> findBySmallCategoryName(@Param("name") String name, Pageable pageable);
 
     //===================================================
+
+    List<News> findByAppUserAndStatus(AppUser appUser, boolean status);
 
     @Query("select n from News n where n.status=true ")
     Page<News> findAllPage(Pageable pageable);

@@ -17,7 +17,7 @@ function createTag() {
             headers: {
                 "Authorization": tokenHeader_admin_value,
             },
-            url: URI+ "api/v1/admin/tag",
+            url:  "api/v1/admin/tag",
             data: JSON.stringify(tag),
             cache: false,
             timeout: 300000,
@@ -70,7 +70,7 @@ function updateTag(data) {
             headers: {
                 "Authorization": tokenHeader_admin_value,
             },
-            url: URI+"api/v1/admin/tag",
+            url: "api/v1/admin/tag",
             data: JSON.stringify(data),
             timeout: 30000,
             success: function () {

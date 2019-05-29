@@ -27,7 +27,6 @@ public class Tag implements Serializable {
 
     @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "tags")
-
     private List<News> news = new ArrayList<>();
 
     @NotNull

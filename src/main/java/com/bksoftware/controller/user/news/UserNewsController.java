@@ -44,6 +44,18 @@ public class UserNewsController {
     @Autowired
     private RecordService recordService;
 
+
+    @GetMapping("user")
+    public ResponseEntity<List<News>> findAllNewsByUserId(
+            @RequestParam("user-id") int id,
+            HttpServletResponse response
+    ) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        List<News> newsList = newsService.findAllNewsByUserId(id);
+        if (newsList != null) return new ResponseEntity<>(newsList, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     @PostMapping
     public ResponseEntity<Object> createNews(
             @RequestBody News news,
@@ -112,4 +124,6 @@ public class UserNewsController {
         }
         return new ResponseEntity<>("delete news fail", HttpStatus.BAD_REQUEST);
     }
+
+
 }
