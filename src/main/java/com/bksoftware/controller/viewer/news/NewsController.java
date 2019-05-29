@@ -322,4 +322,15 @@ NewsController {
         double result = Math.ceil(pageNumber / 5);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+    @GetMapping("user")
+    public ResponseEntity<List<News>> findAllNewsByUserId(
+            @RequestParam("user-id") int id,
+            HttpServletResponse response
+    ) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        List<News> newsList = newsService.findAllNewsByUserId(id);
+        if (newsList != null) return new ResponseEntity<>(newsList, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }

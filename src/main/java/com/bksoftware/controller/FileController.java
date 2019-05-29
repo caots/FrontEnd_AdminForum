@@ -33,6 +33,7 @@ public class FileController {
         String rs = URL_UPLOAD_FILE + file.getOriginalFilename();
         System.out.println(rs);
         return new ResponseEntity<>(rs, HttpStatus.OK);
+
     }
 
     private void multiPartFile(@RequestParam("file") MultipartFile file) {
