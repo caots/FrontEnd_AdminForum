@@ -73,6 +73,7 @@ public class AppUser implements Serializable {
     public Collection<? extends GrantedAuthority> grantedAuthorities() {
         List<GrantedAuthority> list = new ArrayList<>();
         appRoles.forEach(role -> list.add(new SimpleGrantedAuthority(role.getName())));
+       //list.add(new SimpleGrantedAuthority("ROLE_USER"));
         return list;
     }
 

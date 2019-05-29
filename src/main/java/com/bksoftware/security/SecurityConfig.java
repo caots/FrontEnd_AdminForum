@@ -1,10 +1,11 @@
 package com.bksoftware.security;
 
 
+import com.bksoftware.service_impl.JWTService;
 import com.bksoftware.service_impl.UserDetailsService_Impl;
+import com.bksoftware.service_impl.user.AppUserService_Impl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,15 +25,15 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService_Impl userDetailsService;
+    private final AppUserService_Impl appUserService;
+    private final JWTService jwtService;
 
-    public SecurityConfig(UserDetailsService_Impl userDetailsService) {
+    public SecurityConfig(UserDetailsService_Impl userDetailsService, AppUserService_Impl appUserService, JWTService jwtService) {
         this.userDetailsService = userDetailsService;
+        this.appUserService = appUserService;
+        this.jwtService = jwtService;
     }
 
-    @Bean
-    public JWTAuthorizationFilter jwtAuthorizationFilter() throws Exception {
-        return new JWTAuthorizationFilter(authenticationManager());
-    }
 
     @Bean
     public RestAuthenticationEntryPoint restAuthenticationEntryPoint() {
@@ -49,28 +50,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable();
 
-//        http.antMatcher("/api/**/private/**")
-//                .authorizeRequests()
-//                .anyRequest().authenticated()
-//                .and()
-//                .httpBasic().authenticationEntryPoint(restAuthenticationEntryPoint())
-//                .and()
-//                .addFilter(jwtAuthorizationFilter())
-//                .exceptionHandling().accessDeniedHandler(customAccessDeniedHandler());
         http.antMatcher("/api/**")
-
                 .authorizeRequests()
                 .antMatchers("/api/**/public/**").permitAll()
-                .antMatchers("/api/**/public/register").permitAll()
-                .antMatchers("/api/**/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/api/**/mod/**").hasAuthority("MOD")
-                .antMatchers("/api/**/user/**").hasAuthority("USER")
+                .antMatchers("/api/**/admin/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/api/**/mod/**").access("hasRole('ROLE_MOD')")
+                .antMatchers("/api/**/user/**").access("hasRole('ROLE_USER')")
                 .anyRequest().authenticated()
                 .and()
-                .addFilterBefore(new HeaderFilter(authenticationManager()),HeaderFilter.class)
                 .httpBasic().authenticationEntryPoint(restAuthenticationEntryPoint())
                 .and()
-                .addFilter(jwtAuthorizationFilter())
+                .addFilter(new JWTAuthorizationFilter(authenticationManager(), appUserService, jwtService))
                 .exceptionHandling().accessDeniedHandler(customAccessDeniedHandler());
 
 
