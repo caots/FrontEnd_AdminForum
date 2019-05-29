@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/api/v1/user/news")
+@RolesAllowed("ROLE_ADMIN")
 public class UserNewsController {
 
     @Autowired

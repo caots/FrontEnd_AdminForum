@@ -53,14 +53,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.antMatcher("/api/**")
                 .authorizeRequests()
                 .antMatchers("/api/**/public/**").permitAll()
-                .antMatchers("/api/**/admin/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/api/**/mod/**").access("hasRole('ROLE_MOD')")
-                .antMatchers("/api/**/user/**").access("hasRole('ROLE_USER')")
                 .anyRequest().authenticated()
                 .and()
+                .addFilterBefore(new JWTAuthorizationFilter(authenticationManager(), appUserService, jwtService), JWTAuthorizationFilter.class)
                 .httpBasic().authenticationEntryPoint(restAuthenticationEntryPoint())
                 .and()
-                .addFilter(new JWTAuthorizationFilter(authenticationManager(), appUserService, jwtService))
                 .exceptionHandling().accessDeniedHandler(customAccessDeniedHandler());
 
 

@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,6 +19,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("api/v1/user/tag")
+@RolesAllowed("ROLE_ADMIN")
 public class UserTagController {
 
     @Autowired
