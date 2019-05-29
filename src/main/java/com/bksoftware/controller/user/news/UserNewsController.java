@@ -26,7 +26,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/api/v1/user/news")
-@RolesAllowed("ROLE_ADMIN")
+@RolesAllowed("ROLE_USER")
 public class UserNewsController {
 
     @Autowired

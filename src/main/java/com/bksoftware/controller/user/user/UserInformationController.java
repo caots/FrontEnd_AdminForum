@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/v1/user")
-@RolesAllowed("ROLE_ADMIN")
+@RolesAllowed("ROLE_USER")
 public class UserInformationController {
 
     @Autowired

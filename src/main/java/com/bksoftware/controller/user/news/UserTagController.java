@@ -19,7 +19,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("api/v1/user/tag")
-@RolesAllowed("ROLE_ADMIN")
+@RolesAllowed("ROLE_USER")
 public class UserTagController {
 
     @Autowired
