@@ -9,10 +9,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("api/v1/admin/menu")
+@RolesAllowed("ROLE_ADMIN")
 public class AdminMenuController {
 
     @Autowired
