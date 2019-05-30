@@ -37,7 +37,7 @@ public interface NewsRepository extends JpaRepository<News, Integer> {
     @Query("SELECT n FROM News n WHERE n.title LIKE CONCAT('%',:title,'%') and n.status= true and n.newsStatus= true")
     List<News> findByNameSize(@Param("title") String name);
 
-    @Query("SELECT n FROM News n WHERE n.appUser.name = :name and n.status= true and n.newsStatus= true")
+    @Query("SELECT n FROM News n WHERE n.appUser.name LIKE CONCAT('%',:name,'%') and n.status= true and n.newsStatus= true")
     Page<News> findByUserName(@Param("name") String name, Pageable pageable);
 
     @Query("SELECT n FROM News n WHERE n.status= true and n.newsStatus= false ")
