@@ -35,6 +35,10 @@ public class News implements Serializable {
     private String image;
 
     @NotNull
+    @Column(name = "news_status")
+    private boolean newsStatus;
+
+    @NotNull
     private LocalDateTime time;
 
     @NotNull

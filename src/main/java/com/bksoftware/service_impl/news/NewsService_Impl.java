@@ -39,10 +39,21 @@ public class NewsService_Impl implements NewsService {
         try {
             return newsRepository.findByStatus(true);
         } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, "find-all-news-error : {0}", ex.getMessage());
+            LOGGER.log(Level.SEVERE, "find-all-news-status-flase-error : {0}", ex.getMessage());
         }
         return null;
     }
+
+    @Override
+    public List<News> findAllNewsStatusFalse() {
+        try {
+            return newsRepository.findByNewsStatus(false);
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "find-all-news-by-tag-error : {0}", ex.getMessage());
+        }
+        return null;
+    }
+
 
     @Override
     public List<News> findByTag(int tagId, Pageable pageable) {
@@ -135,17 +146,8 @@ public class NewsService_Impl implements NewsService {
             Page<News> newsPage = newsRepository.findByNamePage(title, pageable);
 
             if (newsPage.isEmpty()) {
-                newsPage = newsRepository.findByMenuName(title, pageable);
+                newsPage = newsRepository.findByUserName(title, pageable);
             }
-
-            if (newsPage.isEmpty()) {
-                newsPage = newsRepository.findByBigCategoryName(title, pageable);
-            }
-
-            if (newsPage.isEmpty()) {
-                newsPage = newsRepository.findBySmallCategoryName(title, pageable);
-            }
-
             return newsPage.getContent();
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, "find-all-news-by-name-page-error : {0}", ex.getMessage());

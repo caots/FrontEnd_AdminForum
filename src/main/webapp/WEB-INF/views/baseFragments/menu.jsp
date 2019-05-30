@@ -24,6 +24,14 @@
                                     </span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="check-news" id="menu-extra1.2">
+                                    <span>
+                                      Check News
+                                    </span>
+                        </a>
+                    </li>
                     <li>
                         <a href="tag" id="menu-extra1.3" class="menu-extra-click">
                                     <span>

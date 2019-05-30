@@ -24,8 +24,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("api/v1/public/news")
-public class
-NewsController {
+public class NewsController {
 
     @Autowired
     private NewsService newsService;
@@ -53,6 +52,20 @@ NewsController {
         record.setSize(newsList.size());
         if (newsList != null) {
             recordService.saveRecord(record);
+            return new ResponseEntity<>(newsList, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+
+    @GetMapping("status")
+    public ResponseEntity<List<News>> findAllNewsStatusFalse(
+            HttpServletResponse response
+    ) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        List<News> newsList = newsService.findAllNewsStatusFalse();
+        if (newsList != null) {
+
             return new ResponseEntity<>(newsList, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -61,6 +61,17 @@ public class HomeAdminController {
         return "news";
     }
 
+    @RequestMapping(value = {"/check-news"}, method = RequestMethod.GET)
+    public String checkNewsPage(HttpServletRequest request) {
+
+        String token = getToken(request);
+
+        if (token == null) {
+            return "login";
+        }
+        return "checkNews";
+    }
+
 
     @RequestMapping(value = {"/tag"}, method = RequestMethod.GET)
     public String tagPage(HttpServletRequest request) {

@@ -24,7 +24,7 @@ public class FileController {
 
     private static final String URL_UPLOAD_FILE = "https://image.bksoftwarevn.com/data/public/resources/img/haphatsmarthome/";
 
-    private static final String UPLOAD_DIRECTORY = "/home/tomcat/webapps/data/public/resources/img/haphatsmarthome";
+    private static final String UPLOAD_DIRECTORY = "F:\\admin_forum_tinh_te\\src\\main\\resources\\static\\img";
 
     @PostMapping(value = "/upload-file")
     public ResponseEntity<Object> uploadFile(@RequestParam("file") MultipartFile file) {
@@ -33,7 +33,6 @@ public class FileController {
         String rs = URL_UPLOAD_FILE + file.getOriginalFilename();
         System.out.println(rs);
         return new ResponseEntity<>(rs, HttpStatus.OK);
-
     }
 
     private void multiPartFile(@RequestParam("file") MultipartFile file) {
@@ -49,7 +48,6 @@ public class FileController {
             LOGGER.log(Level.SEVERE, "upload-file-error : {0}", e.getMessage());
         }
     }
-
 
     //method for uploading multiple files
     @PostMapping(value = "/upload-multi-files", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

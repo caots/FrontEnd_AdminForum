@@ -44,9 +44,6 @@ public class UserNewsController {
     @Autowired
     private RecordService recordService;
 
-
-
-
     @PostMapping
     public ResponseEntity<Object> createNews(
             @RequestBody News news,

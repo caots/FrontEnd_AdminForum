@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface NewsService {
 
+    List<News> findAllNewsStatusFalse();
+
     List<News> findAll();
 
     List<News> findByTag(int tagId, Pageable pageable);

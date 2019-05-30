@@ -27,6 +27,12 @@
         <put-attribute name="body" value="/WEB-INF/views/bodyFragments/news/news.jsp"/>
     </definition>
 
+    <!-- News Status Page -->
+    <definition name="checkNews" extends="base.definition">
+        <put-attribute name="title" value="news check"/>
+        <put-attribute name="body" value="/WEB-INF/views/bodyFragments/news/news_status.jsp"/>
+    </definition>
+
     <!-- Tag Page -->
     <definition name="tag" extends="base.definition">
         <put-attribute name="title" value="tag"/>

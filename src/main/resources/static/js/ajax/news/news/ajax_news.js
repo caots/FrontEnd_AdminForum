@@ -1,6 +1,8 @@
 $(document).ready(function () {
+
     findAllPageNewsNumber();
     searchNewsByName(1);
+    findAllNewsStatusFalse();
 });
 
 //==================================page=====================================
@@ -82,6 +84,7 @@ function findAllNewsBySize(page) {
         }
     })
 }
+
 
 
 function displayOnTable(newses) {

@@ -25,4 +25,6 @@ public interface AppUserRepository extends JpaRepository<AppUser, Integer> {
     @Query("select u from AppUser u where u.status=true ")
     Page<AppUser> findAllPage(Pageable pageable);
 
+    Page<AppUser> findByName(String name, Pageable pageable);
+
 }
