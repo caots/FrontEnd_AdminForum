@@ -61,13 +61,6 @@
                                     </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="small-category" id="menu-extra2.3" class="menu-extra-click">
-                                    <span>
-                                        Small Category
-                                    </span>
-                        </a>
-                    </li>
                 </ul>
             </li>
         </ul>
