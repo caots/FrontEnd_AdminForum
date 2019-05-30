@@ -3,8 +3,9 @@ package com.bksoftware.controller.viewer.user;
 import com.bksoftware.entities.Record;
 import com.bksoftware.entities.json_payload.LoginForm;
 import com.bksoftware.entities.json_payload.RegisterForm;
+import com.bksoftware.entities.user.AppRole;
 import com.bksoftware.entities.user.AppUser;
-import com.bksoftware.entities.user.Message;
+import com.bksoftware.service.user.AppRoleService;
 import com.bksoftware.service_impl.RecordService_Impl;
 import com.bksoftware.service_impl.user.AppUserService_Impl;
 import com.bksoftware.service_impl.JWTService;
@@ -15,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.management.relation.Role;
 import javax.servlet.http.HttpServletResponse;
 
-import static com.bksoftware.util.Regex.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/public")
@@ -26,6 +29,7 @@ public class UserSecurityController {
     private final AppUserService_Impl appUserService;
     private final JWTService jwtService;
     private final RecordService_Impl recordService;
+
 
     public UserSecurityController(AppUserService_Impl appUserService, JWTService jwtService, RecordService_Impl recordService) {
         this.appUserService = appUserService;

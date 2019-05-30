@@ -91,9 +91,26 @@ public class UserNewsController {
     @PutMapping
     public ResponseEntity<Object> updateNews(
             @RequestBody News news,
+            @RequestParam("tagString") String tagString,
             HttpServletResponse response
     ) {
+        System.out.println("sdaaaaaaaa");
         response.setHeader("Access-Control-Allow-Origin", "*");
+        String[] arrTagId = tagString.split(",");
+        Set<Integer> tagIds = new HashSet<>();
+
+        for (int i = 0; i < arrTagId.length; i++) {
+            tagIds.add(Integer.parseInt(arrTagId[i]));
+        }
+
+        List<Tag> tagList = new ArrayList<>();
+        tagIds.forEach(id -> {
+            Tag tag = tagService.findById(id);
+            if (tag != null) {
+                tagList.add(tag);
+            }
+        });
+        news.setTags(tagList);
         boolean result = newsService.saveNews(news);
         if (result) {
             return new ResponseEntity<>("update news success", HttpStatus.OK);

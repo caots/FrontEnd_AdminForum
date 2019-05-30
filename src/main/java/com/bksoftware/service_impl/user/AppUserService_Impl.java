@@ -95,8 +95,7 @@ public class AppUserService_Impl implements AppUserService {
     public boolean saveAppUser(RegisterForm registerForm) {
 
         List<AppRole> appRoles = new ArrayList<>();
-        appRoles.add(appRoleRepository.findByName("USER"));
-
+        appRoles.add(appRoleRepository.findByName("ROLE_USER"));
         AppUser appUser = new AppUser();
         appUser.setEmail(registerForm.getUsername());
         appUser.setPassword(MD5.encode(registerForm.getPassword()));
@@ -108,6 +107,7 @@ public class AppUserService_Impl implements AppUserService {
         appUser.setJob(registerForm.getJob());
         appUser.setJoinDate(LocalDate.now());
         appUser.setAppRoles(appRoles);
+        appUser.setStatus(true);
         try {
             appUserRepository.save(appUser);
             return true;
