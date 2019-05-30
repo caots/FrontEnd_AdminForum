@@ -9,8 +9,6 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <%--=================================== CSS =======================================--%>
     <%@include file="../../library/library_css.jsp" %>
-    <link href="https://image.bksoftwarevn.com/data/public/resources/img/haphatsmarthome/logo-title.png"
-          rel="shortcut icon">
 </head>
 <body>
 

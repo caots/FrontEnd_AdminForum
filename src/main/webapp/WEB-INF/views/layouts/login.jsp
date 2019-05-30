@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="../../library/taglib.jsp" %>
-<link href="https://image.bksoftwarevn.com/data/public/resources/img/haphatsmarthome/logo-title.png" rel="shortcut icon">
 
 <html lang="en">
 <head>
