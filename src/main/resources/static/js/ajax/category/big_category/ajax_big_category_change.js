@@ -12,10 +12,13 @@ function createBigCategory() {
     });
     $('#btn-create-big-category').click(function () {
         const nameBigCategory = $("#name-big-category").val();
+        const desBigCategory = $("#des-big-category").val();
         console.log(nameBigCategory);
         const bigCategory = {
-            "name": nameBigCategory
+            "name": nameBigCategory,
+            "description": desBigCategory
         };
+        console.log(idMenu);
         $.ajax({
             type: "POST",
             contentType: "application/json",

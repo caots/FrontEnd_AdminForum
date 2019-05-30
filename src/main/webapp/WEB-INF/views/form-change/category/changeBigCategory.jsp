@@ -5,7 +5,11 @@
     <div class="row ">
         <div class="col-md-2"></div>
         <div class="col-md-9">
-            <h1 style="margin-top: 40px"> Big Category </h1>
+            <div style="text-align: left">
+                <a href="big-category">
+                    <button type="button" class="btn btn-lg btn-warning">Thoát</button>
+                </a>
+            </div>
             <div class="category">
                 <div class="form-group row">
                     <div class="col-md-5">
@@ -16,21 +20,22 @@
                         <label><h5>Menu</h5></label>
                         <select class="form-control" id="menu-value"></select>
                     </div>
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-lg btn-primary" id="btn-create-big-category">Submit
-                        </button>
-                    </div>
 
                 </div>
+                <div class="form-group row">
+                    <div class="col-md-10">
+                        <label><h5>Description Big Category</h5></label>
+                        <input class="form-control" placeholder="big category" id="des-big-category">
+                    </div>
+                </div>
             </div>
-
             <div style="text-align: center">
-                <a href="big-category">
-                    <button type="button" class="btn btn-lg btn-warning">Thoát</button>
-                </a>
+                <button type="button" class="btn btn-lg btn-primary" id="btn-create-big-category">Submit
+                </button>
             </div>
 
         </div>
+
         <div class="col-md-2"></div>
     </div>
 </div>
