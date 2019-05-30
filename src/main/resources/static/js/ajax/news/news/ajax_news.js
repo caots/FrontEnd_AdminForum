@@ -131,11 +131,11 @@ function deleteNews() {
                 "Authorization": tokenHeader_admin_value,
             },
             contentType: "application/json",
-            url: "api/v1/admin/news/delete?id=" + id,
+            url: "api/v1/user/news/delete?id=" + id,
             timeout: 30000,
             success: function () {
                 alert('DELETE SUCCESS');
-                return;
+                location.href = "news";
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 errMess(jqXHR, textStatus, errorThrown);

@@ -106,7 +106,7 @@ function deleteBigCategory() {
             timeout: 30000,
             success: function () {
                 alert('SUCCESS');
-                return;
+                location.href = "big-category"
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 errMess(jqXHR, textStatus, errorThrown);

@@ -38,8 +38,9 @@ function displayOnTable(newses) {
                          <td> ${news.time} </td>
                          <td> ${news.appUser.name} </td>
                          <td>
+                              <span name="${news.id}" class="check-news" style="cursor: pointer;color: green">Check</span>&nbsp;
                               <span name="${news.id}" class="delete-news" style="cursor: pointer;color: red">Delete</span>&nbsp;
-                              <span name="${news.id}" class="check-news" style="cursor: pointer;color: red">Check</span>&nbsp;
+                              
                         </td>
                         </tr>
                        `;
@@ -62,11 +63,11 @@ function deleteNewsStatus() {
                 "Authorization": tokenHeader_admin_value,
             },
             contentType: "application/json",
-            url: "api/v1/admin/news/delete?id=" + id,
+            url: "api/v1/user/news/delete?id=" + id,
             timeout: 30000,
             success: function () {
                 alert('DELETE SUCCESS');
-                return;
+                location.href = "check-news";
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 errMess(jqXHR, textStatus, errorThrown);
@@ -90,7 +91,7 @@ function checkedNews() {
             timeout: 30000,
             success: function () {
                 alert('CHECKED SUCCESS');
-                return;
+                location.href = "check-news";
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 errMess(jqXHR, textStatus, errorThrown);
